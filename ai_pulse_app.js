@@ -66,7 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const desc = tool.description || tool.desc || "Trending breakthrough in the AI ecosystem.";
                     const link = tool.link || tool.url || "#";
                     
-                    const useCase = tool.use_case || "Productivity";
+                    let useCase = tool.use_case || "Productivity";
+                    // Shorten use case based on tool name
+                    if (name.includes("Copilot Cowork")) useCase = "Teams";
+                    else if (name.includes("Cross-App Synthesis")) useCase = "Productivity";
+                    else if (name.includes("Nemotron 3 Super")) useCase = "Developers";
+                    else if (name.includes("ChatGPT Tasks")) useCase = "Automation";
+                    else if (name.includes("Enterprise Marketplace")) useCase = "Enterprise";
+                    else if (name.includes("OpenClaw")) useCase = "Developers";
+
                     const pricing = tool.pricing || "Freemium";
                     const pricingClass = `badge-${pricing.toLowerCase().split(' ')[0]}`;
 
@@ -75,10 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="card-header">
                             <span class="tag">Trending Tool</span>
                         </div>
-                        <div class="badge-container" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="tool-badge badge-usecase">Best for: ${useCase}</span>
+                        <div class="badge-container" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: nowrap; overflow: hidden; white-space: nowrap;">
+                            <span class="tool-badge badge-usecase" style="flex-shrink: 0;">Best for: ${useCase}</span>
                             <span style="opacity: 0.5;">·</span>
-                            <span class="tool-badge ${pricingClass}">${pricing}</span>
+                            <span class="tool-badge ${pricingClass}" style="flex-shrink: 0;">${pricing}</span>
                         </div>
                         <h3>${name}</h3>
                         <p class="gist-section">${desc}</p>
