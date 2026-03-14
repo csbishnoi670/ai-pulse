@@ -24,6 +24,8 @@
     <meta name="twitter:description" content="6 News stories. 6 Tools. 1 Viral Meme. The week in AI, mastered.">
 
     <link rel="stylesheet" href="ai_pulse_styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -47,8 +49,10 @@
         <div class="nav-container">
             <div class="brand">AI PULSE<span>.</span></div>
             <div class="nav-links">
-                <a href="#" class="btn-primary-small">Hire Our Agency</a> <!-- TODO: Replace with real agency URL -->
-                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">🌓</button>
+                <a href="#" class="btn-primary-small" onclick="alert('Agency services coming soon!'); return false;">Hire Our Agency</a> <!-- TODO: Replace with real agency URL -->
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; color:inherit; display:flex; align-items:center;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
             </div>
         </div>
     </nav>
@@ -76,13 +80,46 @@
     <section id="weekly-news-section" class="pulse-section">
         <div class="section-badge">🔥 Top News</div>
         <div id="news-grid" class="news-grid">
-            <p class="loading-text">Loading the latest AI signal...</p>
+            <article class="skeleton">
+                <div class="skeleton-title"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+            </article>
+            <article class="skeleton">
+                <div class="skeleton-title"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+            </article>
+            <article class="skeleton">
+                <div class="skeleton-title"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+            </article>
         </div>
     </section>
 
     <section id="weekly-tools-section" class="pulse-section">
         <div class="section-badge">🛠️ Power Tools</div>
-        <div id="tools-grid" class="tools-grid"></div>
+        <div id="tools-grid" class="tools-grid">
+            <article class="skeleton">
+                <div class="skeleton-title"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+            </article>
+            <article class="skeleton">
+                <div class="skeleton-title"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+            </article>
+            <article class="skeleton">
+                <div class="skeleton-title"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+            </article>
+        </div>
     </section>
 
     <!-- CHANGE 5: Improved Email CTA -->
@@ -101,7 +138,9 @@
 
         <section id="fun-zone-section" class="pulse-section fun-zone">
             <div class="section-badge">🎭 Meme of the Week</div>
-            <div id="meme-grid" class="meme-container"></div>
+            <div id="meme-grid" class="meme-container">
+                <div class="skeleton" style="min-height: 400px; border-radius: 12px;"></div>
+            </div>
         </section>
 
         <!-- CHANGE 4: Past Editions in The Library -->
@@ -115,21 +154,21 @@
                         <h4>March 7, 2026</h4>
                         <p>Gemini 2.5 Ultra drops, Meta's Llama 4 leaks, and the agent wars begin</p>
                     </div>
-                    <a href="#" class="read-more-btn">Read Edition →</a>
+                    <a href="#" class="read-more-btn" onclick="alert('Archive edition coming soon!'); return false;">Read Edition →</a>
                 </div>
                 <div class="library-card">
                     <div class="library-info">
                         <h4>February 28, 2026</h4>
                         <p>DeepSeek R2 shocks benchmarks, OpenAI responds with o3 Pro</p>
                     </div>
-                    <a href="#" class="read-more-btn">Read Edition →</a>
+                    <a href="#" class="read-more-btn" onclick="alert('Archive edition coming soon!'); return false;">Read Edition →</a>
                 </div>
                 <div class="library-card">
                     <div class="library-info">
                         <h4>February 21, 2026</h4>
                         <p>Apple Intelligence goes global, Sora 2.0 launches to creators</p>
                     </div>
-                    <a href="#" class="read-more-btn">Read Edition →</a>
+                    <a href="#" class="read-more-btn" onclick="alert('Archive edition coming soon!'); return false;">Read Edition →</a>
                 </div>
             </div>
         </section>
@@ -142,7 +181,7 @@
                 <!-- CHANGE 6: Fixed Social Links -->
                 <a href="https://twitter.com/GrowXwithChandra" target="_blank">X (Twitter)</a>
                 <a href="https://linkedin.com/in/GrowXwithChandra" target="_blank">LinkedIn</a>
-                <a href="#">Terms</a>
+                <a href="#" onclick="alert('Terms page coming soon!'); return false;">Terms</a>
             </div>
         </div>
     </footer>

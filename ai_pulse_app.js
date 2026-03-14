@@ -14,13 +14,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const escapeHTML = (str) => {
+        if (typeof str !== 'string') return str;
+        return str.replace(/[&<>'"]/g, 
+            tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag] || tag)
+        );
+    };
+
     async function loadWeeklyData() {
         const newsGrid = document.getElementById('news-grid');
         const toolsGrid = document.getElementById('tools-grid');
         const memeGrid = document.getElementById('meme-grid');
         const updateDateBadge = document.getElementById('update-date');
+        
+        // Setup Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
         try {
+            // Artificial delay to show off the fancy new skeletons
+            await new Promise(resolve => setTimeout(resolve, 800));
             const response = await fetch('data/latest.json');
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const data = await response.json();
@@ -30,12 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // DEFENSIVE NEWS RENDERING
             if (data.news && Array.isArray(data.news)) {
                 newsGrid.innerHTML = data.news.map(item => {
-                    const title = item.title || item.story || "AI Headline";
-                    const link = item.link || item.url || "#";
-                    const gist = Array.isArray(item.gist) ? item.gist : ["High-signal update available", "Click source for full details"];
-                    const summary = item.full_summary || "Our agent is verifying the deep-dive details for this story. Check the source for the full report.";
-                    const tip = item.tip || "Stay tuned for actionable implementation tips.";
-                    const cardDate = data.date || "Mar 14, 2026";
+                    const title = escapeHTML(item.title || item.story || "AI Headline");
+                    const link = escapeHTML(item.link || item.url || "#");
+                    const gist = Array.isArray(item.gist) ? item.gist.map(escapeHTML) : ["High-signal update available", "Click source for full details"];
+                    const summary = escapeHTML(item.full_summary || "Our agent is verifying the deep-dive details for this story. Check the source for the full report.");
+                    const tip = escapeHTML(item.tip || "Stay tuned for actionable implementation tips.");
+                    const cardDate = escapeHTML(data.date || "Mar 14, 2026");
 
                     return `
                     <article class="card news-card fade-in">
@@ -62,9 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // DEFENSIVE TOOLS RENDERING
             if (data.tools && Array.isArray(data.tools)) {
                 toolsGrid.innerHTML = data.tools.map(tool => {
-                    const name = tool.name || "AI Tool";
-                    const desc = tool.description || tool.desc || "Trending breakthrough in the AI ecosystem.";
-                    const link = tool.link || tool.url || "#";
+                    const name = escapeHTML(tool.name || "AI Tool");
+                    const desc = escapeHTML(tool.description || tool.desc || "Trending breakthrough in the AI ecosystem.");
+                    const link = escapeHTML(tool.link || tool.url || "#");
                     
                     let useCase = tool.use_case || "Productivity";
                     // Shorten use case based on tool name
@@ -75,7 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     else if (name.includes("Enterprise Marketplace")) useCase = "Enterprise";
                     else if (name.includes("OpenClaw")) useCase = "Developers";
 
-                    const pricing = tool.pricing || "Freemium";
+                    useCase = escapeHTML(useCase);
+                    const pricing = escapeHTML(tool.pricing || "Freemium");
                     const pricingClass = `badge-${pricing.toLowerCase().split(' ')[0]}`;
 
                     return `
@@ -99,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // FIXED: DEFENSIVE MEME RENDERING WITH TYPE CHECK
             if (data.meme) {
-                const desc = data.meme.description || data.meme.title || "Viral AI Pulse";
+                const desc = escapeHTML(data.meme.description || data.meme.title || "Viral AI Pulse");
                 let link = data.meme.link || data.meme.url;
                 
                 if (link && typeof link === 'string' && (link.includes('x.com') || link.includes('twitter.com'))) {
@@ -109,17 +141,40 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div id="tweet-container"></div>
                         </div>`;
                     
-                    const tweetId = link.split('/').pop().split('?')[0];
-                    if (window.twttr && window.twttr.widgets) {
+                    let tweetId = '';
+                    try {
+                        const url = new URL(link);
+                        if (url.pathname.includes('/status/')) {
+                            tweetId = url.pathname.split('/status/')[1].split('/')[0];
+                        } else if (url.pathname.includes('/video/')) {
+                            // Some forms might be video
+                            tweetId = url.pathname.split('/video/')[1].split('/')[0];
+                        } else {
+                            // Fallback if it ends with ID without status
+                            const potentialId = url.pathname.split('/').pop().split('?')[0];
+                            if (potentialId && !isNaN(potentialId)) {
+                                tweetId = potentialId;
+                            }
+                        }
+                    } catch (e) {
+                        console.warn('Could not parse tweet ID from URL', e);
+                    }
+
+                    if (tweetId && window.twttr && window.twttr.widgets) {
                         window.twttr.widgets.createTweet(tweetId, document.getElementById('tweet-container'), {
                             theme: body.getAttribute('data-theme'),
                             align: 'center'
                         });
+                    } else if (!tweetId) {
+                        memeGrid.innerHTML += `<p style="text-align:center; opacity:0.6;"><a href="${escapeHTML(link)}" target="_blank" style="color:var(--accent-color);">View the meme on X</a></p>`;
                     }
                 } else {
                     memeGrid.innerHTML = `<p style="text-align:center; opacity:0.6;">Curating this week's viral AI signal...</p>`;
                 }
             }
+
+            // Attach observer to newly rendered sections and existing static sections
+            document.querySelectorAll('.fade-in:not(.hero-content)').forEach(el => observer.observe(el));
 
         } catch (error) {
             console.error('Render Error:', error);
@@ -131,10 +186,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.classList.contains('read-more-btn')) {
             const btn = e.target;
             const card = btn.closest('.card');
-            const isExpanded = card.classList.toggle('expanded');
-            btn.textContent = isExpanded ? 'Show Less' : 'Read More';
+            if (card) {
+                const isExpanded = card.classList.toggle('expanded');
+                btn.textContent = isExpanded ? 'Show Less' : 'Read More';
+            }
         }
     });
+
+    // Form submission handler
+    const subscribeForm = document.querySelector('.subscribe-form');
+    if (subscribeForm) {
+        subscribeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = subscribeForm.querySelector('input[type="email"]');
+            const submitBtn = subscribeForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            // Simple visual feedback
+            submitBtn.textContent = 'Subscribed! 🎉';
+            submitBtn.style.backgroundColor = '#48bb78'; // Use green color for success
+            emailInput.value = '';
+            
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.backgroundColor = '';
+            }, 3000);
+        });
+    }
 
     loadWeeklyData();
 });

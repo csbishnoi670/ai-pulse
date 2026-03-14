@@ -1,10 +1,10 @@
 :root {
-    --bg-color: #050505;
+    --bg-color: #08090f; /* Refined deeper violet-black */
     --text-color: #ffffff;
     --accent-color: #7000ff;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --border-color: rgba(255, 255, 255, 0.1);
-    --glass-bg: rgba(5, 5, 5, 0.85);
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(8, 9, 15, 0.85); /* Matches new bg */
     --secondary-text: #a0a0a0;
     --card-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.8);
     --font-heading: 'Outfit', sans-serif;
@@ -50,6 +50,7 @@ body {
     position: sticky; top: 0; z-index: 1000;
     background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color); padding: 1rem 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05); /* Added slight top bevel */
 }
 .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 .brand { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; }
@@ -122,6 +123,7 @@ body {
 .premium-content h2 { 
     font-size: 3.5rem; font-family: var(--font-heading); margin-bottom: 1.5rem; 
     background: linear-gradient(to bottom, #ffffff, var(--premium-gold));
+    background-clip: text;
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     letter-spacing: -2px; line-height: 1;
 }
@@ -142,9 +144,15 @@ body {
 .btn-accent {
     background: var(--accent-color); border: none; color: white;
     padding: 1rem 2.5rem; border-radius: 15px; font-weight: 800; font-size: 1rem;
-    cursor: pointer; transition: all 0.3s;
+    cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, #7000ff 0%, #a855f7 50%, #7000ff 100%);
 }
-.btn-accent:hover { filter: brightness(1.2); box-shadow: 0 10px 25px rgba(112, 0, 255, 0.4); }
+.btn-accent:hover { 
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px -5px rgba(112, 0, 255, 0.5); 
+}
 
 .sub-text { font-size: 0.9rem; margin-top: 2rem; color: var(--secondary-text); opacity: 0.6; }
 
@@ -177,8 +185,13 @@ h1 { font-family: var(--font-heading); font-size: 5rem; font-weight: 800; letter
     border-radius: 24px; padding: 2.5rem; box-shadow: var(--card-shadow);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;
     backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05); /* Bevel */
 }
-.card:hover { border-color: rgba(112, 0, 255, 0.4); transform: translateY(-8px); }
+.card:hover { 
+    border-color: rgba(112, 0, 255, 0.5); 
+    transform: translateY(-8px); 
+    box-shadow: 0 20px 40px -10px rgba(112, 0, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
 
 .card h3 { font-family: var(--font-heading); font-size: 1.6rem; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -0.5px; }
 .gist-section { font-size: 1.1rem; color: var(--secondary-text); margin-bottom: 2rem; }
@@ -252,9 +265,13 @@ h1 { font-family: var(--font-heading); font-size: 5rem; font-weight: 800; letter
 .tool-badge {
     font-size: 0.7rem;
     font-weight: 700;
-    padding: 0.2rem 0.6rem;
+    padding: 0.3rem 0.8rem;
     border-radius: 20px;
     text-transform: uppercase;
+    transition: transform 0.2s ease;
+}
+.tool-badge:hover {
+    transform: scale(1.05);
 }
 .badge-usecase { background: rgba(255, 255, 255, 0.1); color: var(--text-color); }
 .badge-free { background: rgba(72, 187, 120, 0.2); color: #48bb78; }
@@ -287,5 +304,45 @@ h1 { font-family: var(--font-heading); font-size: 5rem; font-weight: 800; letter
     .library-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
 
-.fade-in { animation: fadeIn 1s ease-out forwards; }
+/* ANIMATIONS & STATES */
+/* Intersection Observer Fade */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.fade-in.is-visible { opacity: 1; transform: translateY(0); }
+.hero-content.fade-in { animation: fadeIn 1s ease-out forwards; } /* Keep hero immediate */
+
 @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* CSS Skeleton Loaders */
+.skeleton {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 2.5rem;
+    height: 100%;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -150%; width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+    animation: placeholderShimmer 2s infinite linear;
+    transform: skewX(-20deg);
+}
+[data-theme="light"] .skeleton::before {
+    background: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.05) 50%, transparent 100%);
+}
+
+.skeleton-title { height: 24px; background: rgba(255,255,255,0.1); border-radius: 4px; width: 70%; margin-top: 1rem; margin-bottom: 1.5rem; }
+.skeleton-line { height: 16px; background: rgba(255,255,255,0.05); border-radius: 4px; width: 100%; margin-bottom: 0.8rem; }
+.skeleton-line.short { width: 60%; }
+[data-theme="light"] .skeleton-title { background: rgba(0,0,0,0.1); }
+[data-theme="light"] .skeleton-line { background: rgba(0,0,0,0.05); }
+
+@keyframes placeholderShimmer {
+    0% { left: -150%; }
+    100% { left: 250%; }
+}
