@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="expandable-content">
                             <div class="deep-dive"><p>${summary}</p></div>
-                            <div class="utility-tip"><strong>Why it matters:</strong> ${tip}</div>
+                            <div class="utility-tip"><strong>Why it matters:</strong> ${item.tip}</div>
                         </div>
                         <div class="card-footer">
                             <button class="read-more-btn" aria-expanded="false">Read More</button>
@@ -74,12 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 `}).join('');
             }
 
-            // DEFENSIVE MEME RENDERING
+            // FIXED: DEFENSIVE MEME RENDERING WITH TYPE CHECK
             if (data.meme) {
                 const desc = data.meme.description || data.meme.title || "Viral AI Pulse";
-                const link = data.meme.link || data.meme.url;
+                let link = data.meme.link || data.meme.url;
                 
-                if (link && link.includes('x.com')) {
+                // Ensure link is a string before calling .includes()
+                if (link && typeof link === 'string' && (link.includes('x.com') || link.includes('twitter.com'))) {
                     memeGrid.innerHTML = `
                         <div class="meme-wrapper">
                             <p class="gist-section" style="text-align:center; margin-bottom:1.5rem;">${desc}</p>
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         });
                     }
                 } else {
-                    memeGrid.innerHTML = `<p style="text-align:center; opacity:0.6;">Searching for this week's viral AI meme...</p>`;
+                    memeGrid.innerHTML = `<p style="text-align:center; opacity:0.6;">Curating this week's viral AI signal...</p>`;
                 }
             }
 
