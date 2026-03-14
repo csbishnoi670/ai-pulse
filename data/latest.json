@@ -1,59 +1,101 @@
 {
-  "date": "2026-03-14",
+  "date": "March 14, 2026",
   "news": [
     {
-      "title": "OpenAI Launches GPT-5.4 with Native Computer-Use Agents",
-      "url": "https://openai.com/news/gpt-5-4-computer-use/"
+      "title": "OpenAI Launches GPT-5.4 'Thinking' Model with Native Computer Use",
+      "gist": [
+        "Introduces a 1-million-token context window and a mid-response 'steerable' reasoning mode.",
+        "Features native software interaction capabilities for automating desktop and web-based workflows."
+      ],
+      "full_summary": "On March 5, 2026, OpenAI released GPT-5.4, a frontier model designed for professional-grade reasoning and autonomy. The system moves beyond simple text generation by incorporating 'Thinking' modes that allow it to plan and verify its own steps before outputting a result. Most notably, it includes built-in computer use features, enabling the model to navigate software environments, execute complex Excel tasks, and manage files without external plugins, signaling a shift from chatbots to autonomous agents.",
+      "tip": "Use the new 'Steerable Reasoning' toggle in the API to force the model to show its planning steps, which significantly reduces logic errors in complex math or coding tasks.",
+      "link": "https://openai.com/blog/gpt-5-4-thinking-model"
     },
     {
-      "title": "Yann LeCun's AMI Labs Raises $1.03B Seed Round for 'World Models'",
-      "url": "https://yann.lecun.com/ami-labs-announcement/"
+      "title": "Anthropic Files Lawsuit Against Pentagon After Supply Chain Blacklisting",
+      "gist": [
+        "Anthropic was designated a 'supply chain risk' by the DoD for refusing to remove autonomous weapon safety guardrails.",
+        "The company filed dual lawsuits in California and D.C. to challenge the legality of the federal blacklist."
+      ],
+      "full_summary": "A major geopolitical rift opened this week as Anthropic challenged the U.S. Department of Defense's decision to label the startup a national security risk. The conflict stems from Anthropic's refusal to modify its 'Constitutional AI' safety layers to allow Claude to assist in fully autonomous kinetic weaponry and space-based missile systems. The legal battle is viewed as a landmark case that will determine if private AI labs can maintain ethical guardrails that conflict with federal military requirements.",
+      "tip": "Companies with federal contracts should audit their AI stack immediately, as the 'Supply Chain Risk' designation may affect downstream vendors using Anthropic's API.",
+      "link": "https://www.anthropic.com/news/legal-challenge-federal-designation"
     },
     {
-      "title": "Anthropic-Pentagon Standoff over Military AI Deployment",
-      "url": "https://www.anthropic.com/news/statement-on-federal-ai-safety/"
+      "title": "Yann LeCun's AMI Labs Raises $1.03 Billion Seed Round for 'World Models'",
+      "gist": [
+        "Meta\u2019s Chief AI Scientist launched AMI Labs to focus on AI that understands physical laws and robotics.",
+        "The massive round was led by Nvidia and Bezos Expeditions, valuing the pre-product startup at over $5 billion."
+      ],
+      "full_summary": "Advanced Machine Intelligence (AMI) Labs, the new venture from Yann LeCun, announced a record-breaking $1.03 billion seed round on March 10, 2026. Eschewing the traditional Large Language Model (LLM) architecture, AMI Labs is building 'World Models' designed to simulate physical reality and cause-and-effect relationships. The goal is to solve the 'Robotics Gap' by creating AI systems that can learn physical tasks as efficiently as humans, targeting the manufacturing and logistics sectors.",
+      "tip": "Keep an eye on AMI Labs' upcoming whitepapers; their shift away from 'Next Token Prediction' toward 'Joint-Embedding Predictive Architecture' (JEPA) could redefine the next era of robotics.",
+      "link": "https://www.amilabs.ai/announcements/seed-funding-round"
     },
     {
-      "title": "Google Releases Gemini 3.1 Flash-Lite with 1M Token Context",
-      "url": "https://blog.google/technology/ai/gemini-3-1-flash-lite/"
+      "title": "Meta Unveils MTIA 500 Chips to Achieve 'Silicon Sovereignty'",
+      "gist": [
+        "Meta released four new generations of custom AI silicon to eliminate reliance on external GPU vendors.",
+        "The MTIA 500 is specifically optimized for Meta\u2019s Llama-4 training and real-time content ranking."
+      ],
+      "full_summary": "Meta accelerated its hardware roadmap on March 11 by unveiling the MTIA 300 through 500 series chips. By designing its own silicon, Meta aims to bypass the global GPU shortage and drastically reduce the 'compute tax' associated with running generative AI across its billions of users. The MTIA 500 reportedly offers a 3x performance-per-watt improvement over current market leaders for recommendation algorithms and is a core component of Meta's goal to achieve full hardware independence by 2027.",
+      "tip": "Developers using PyTorch should start testing their models on Meta's updated ROCm stack to ensure compatibility with the upcoming MTIA hardware deployments.",
+      "link": "https://ai.meta.com/blog/mtia-silicon-sovereignty-2026"
     },
     {
-      "title": "EU Reaches Preliminary Agreement on AI Omnibus Act Amendments",
-      "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+      "title": "Global AI Regulation: UK Eases Rules While China Accelerates Drones Law",
+      "gist": [
+        "The UK government refined its security acts to exempt consumer AI users from mandatory notification rules.",
+        "China's Ministry of Justice announced a new legislative framework for the 'low-altitude' autonomous drone economy."
+      ],
+      "full_summary": "Regulatory landscapes shifted significantly this week as governments balanced safety with innovation. The UK moved to reduce the regulatory burden on small businesses by clarifying that simply using consumer AI tools does not trigger security audits. Meanwhile, on March 14, China announced a comprehensive legal framework for autonomous airspace management, aiming to lead the world in drone-based logistics. In the US, the FTC missed its deadline for a major AI policy statement, leading to uncertainty in the domestic market.",
+      "tip": "If you are a UK-based startup, review the updated National Security and Investment Act; you may no longer need to report standard AI integrations to the government.",
+      "link": "https://www.gov.uk/government/news/nsi-act-refinements-march-2026"
     },
     {
-      "title": "Meta Unveils MTIA 300-500 Custom AI Infrastructure Chips",
-      "url": "https://ai.meta.com/blog/mtia-silicon-sovereignty-2026/"
+      "title": "Corporate Restructuring: Atlassian and Block Pivot to 'AI-First' Workforces",
+      "gist": [
+        "Atlassian laid off 1,600 staff while committing $236 million to new AI-specific engineering roles.",
+        "Block (Square) cut 40% of its workforce, citing massive efficiency gains from autonomous coding agents."
+      ],
+      "full_summary": "The corporate world hit a tipping point this week as software giants Atlassian and Block announced massive restructurings focused on AI automation. Atlassian is hiring two new AI-focused CTOs to lead its 'Agentic Work' initiative, while Block's Jack Dorsey cited the success of autonomous coding agents as the primary reason for a 40% staff reduction. This trend highlights a growing industry shift where companies are prioritizing 'AI density'\u2014fewer employees with higher AI-driven output\u2014over traditional headcount.",
+      "tip": "Job seekers should focus on 'Agent Orchestration' and 'AI Product Management' skills, as these are the roles currently being prioritized in the tech sector's latest hiring wave.",
+      "link": "https://www.atlassian.com/blog/announcements/ai-first-restructuring"
     }
   ],
   "tools": [
     {
-      "name": "Claude Code (CLI Agent)",
-      "url": "https://claude.ai/code"
+      "name": "Microsoft Copilot Cowork",
+      "description": "An autonomous enterprise agent that acts as a digital coworker by managing files, analyzing spreadsheets, and executing workflows directly on your desktop.",
+      "link": "https://www.microsoft.com/en-us/microsoft-365/copilot"
     },
     {
-      "name": "Copilot Cowork",
-      "url": "https://copilot.microsoft.com/cowork"
+      "name": "OpenAI Codex Desktop",
+      "description": "A standalone IDE-integrated application designed to manage fleets of AI coding agents that can refactor entire repositories and fix bugs autonomously.",
+      "link": "https://openai.com/codex"
     },
     {
-      "name": "Cursor (Agent Mode)",
-      "url": "https://cursor.com"
+      "name": "Claude Code",
+      "description": "A powerful CLI-based agent from Anthropic that handles complex software engineering tickets, reaching a $1B revenue run rate this month.",
+      "link": "https://www.anthropic.com/claude/code"
     },
     {
-      "name": "Suno v4",
-      "url": "https://suno.com"
+      "name": "Gemini Deep Research",
+      "description": "A Google Workspace update that allows Gemini to perform multi-source research across Drive, Gmail, and the web to create fully formatted 20-page reports.",
+      "link": "https://gemini.google.com/workspace"
     },
     {
-      "name": "Perplexity Deep Research",
-      "url": "https://www.perplexity.ai/hub/blog/deep-research"
+      "name": "Cursor Agent Mode",
+      "description": "The latest version of the popular AI code editor featuring a 'Composer' mode that can write, test, and debug multi-file features in seconds.",
+      "link": "https://www.cursor.com"
     },
     {
-      "name": "ElevenLabs Voice Actuator",
-      "url": "https://elevenlabs.io"
+      "name": "Runway Gen-4",
+      "description": "A massive upgrade to text-to-video generation featuring consistent character 'actors' and physics-accurate fluid and light simulations.",
+      "link": "https://runwayml.com/gen-4"
     }
   ],
   "meme": {
-    "title": "Your AI Slop Bores Me (YASBM) Viral Trend",
-    "url": "https://x.com/search?q=%23YASBM"
+    "link": "https://x.com/search?q=%23YASBM",
+    "description": "The 'Your AI Slop Bores Me' (YASBM) trend, where users 'LARP' as AI chatbots by providing intentionally glitchy, human-made drawings and responses to mock 'soulless' AI content."
   }
 }
