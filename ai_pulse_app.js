@@ -35,17 +35,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     const gist = Array.isArray(item.gist) ? item.gist : ["High-signal update available", "Click source for full details"];
                     const summary = item.full_summary || "Our agent is verifying the deep-dive details for this story. Check the source for the full report.";
                     const tip = item.tip || "Stay tuned for actionable implementation tips.";
+                    const cardDate = data.date || "Mar 14, 2026";
 
                     return `
                     <article class="card news-card fade-in">
-                        <div class="card-header"><span class="tag">Breaking News</span></div>
+                        <div class="card-header">
+                            <span class="tag">Breaking News</span>
+                            <span style="font-size: 0.75rem; color: var(--secondary-text); margin-left: 0.5rem; opacity: 0.8;">${cardDate}</span>
+                        </div>
                         <h3>${title}</h3>
                         <div class="gist-section">
                             <ul>${gist.map(g => `<li>${g}</li>`).join('')}</ul>
                         </div>
                         <div class="expandable-content">
                             <div class="deep-dive"><p>${summary}</p></div>
-                            <div class="utility-tip"><strong>Why it matters:</strong> ${item.tip}</div>
+                            <div class="utility-tip"><strong>Why it matters:</strong> ${tip}</div>
                         </div>
                         <div class="card-footer">
                             <button class="read-more-btn" aria-expanded="false">Read More</button>
@@ -61,10 +65,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     const name = tool.name || "AI Tool";
                     const desc = tool.description || tool.desc || "Trending breakthrough in the AI ecosystem.";
                     const link = tool.link || tool.url || "#";
+                    
+                    const useCase = tool.use_case || "Productivity";
+                    const pricing = tool.pricing || "Freemium";
+                    const pricingClass = `badge-${pricing.toLowerCase().split(' ')[0]}`;
 
                     return `
                     <article class="card tool-card fade-in">
                         <div class="card-header"><span class="tag">Trending Tool</span></div>
+                        <div class="badge-container">
+                            <span class="tool-badge badge-usecase">Best for: ${useCase}</span>
+                            <span class="tool-badge ${pricingClass}">${pricing}</span>
+                        </div>
                         <h3>${name}</h3>
                         <p class="gist-section">${desc}</p>
                         <div class="card-footer">
@@ -79,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const desc = data.meme.description || data.meme.title || "Viral AI Pulse";
                 let link = data.meme.link || data.meme.url;
                 
-                // Ensure link is a string before calling .includes()
                 if (link && typeof link === 'string' && (link.includes('x.com') || link.includes('twitter.com'))) {
                     memeGrid.innerHTML = `
                         <div class="meme-wrapper">

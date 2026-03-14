@@ -205,5 +205,71 @@ h1 { font-family: var(--font-heading); font-size: 5rem; font-weight: 800; letter
     .btn-accent { width: 100%; }
 }
 
+/* EDITOR'S TAKE SECTION */
+.editors-take-card {
+    background: var(--card-bg);
+    border-left: 4px solid var(--accent-color);
+    padding: 2.5rem;
+    border-radius: 0 24px 24px 0;
+    margin-bottom: 4rem;
+    box-shadow: var(--card-shadow);
+    font-style: italic;
+    backdrop-filter: blur(10px);
+}
+.editors-take-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-style: normal;
+}
+
+/* TOOL BADGES */
+.badge-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.tool-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+.badge-usecase { background: rgba(255, 255, 255, 0.1); color: var(--text-color); }
+.badge-free { background: rgba(72, 187, 120, 0.2); color: #48bb78; }
+.badge-freemium { background: rgba(66, 153, 225, 0.2); color: #4299e1; }
+.badge-paid { background: rgba(237, 137, 54, 0.2); color: #ed8936; }
+
+/* LIBRARY SECTION */
+.library-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.library-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    transition: all 0.3s;
+}
+.library-card:hover { border-color: var(--accent-color); }
+.library-info h4 { font-family: var(--font-heading); margin-bottom: 0.5rem; }
+.library-info p { font-size: 0.9rem; color: var(--secondary-text); }
+
+@media (max-width: 768px) {
+    .library-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}
+
 .fade-in { animation: fadeIn 1s ease-out forwards; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }

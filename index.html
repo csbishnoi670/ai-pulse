@@ -60,41 +60,77 @@
             <p>Your weekly high-signal briefing on the breakthroughs and tools that win. Designed for innovators.</p>
         </div>
     </header>
+<main class="container">
+    <!-- CHANGE 3: Editor's Take Section -->
+    <section id="editors-take" class="fade-in">
+        <div class="editors-take-card">
+            <span class="editors-take-label">✍️ Editor's Take</span>
+            This week, the AI power struggle intensified on two fronts: militarization and money. 
+            OpenAI's $110B raise and Pentagon deal signal that AI is now geopolitical infrastructure — 
+            while Nvidia's open-weight pivot and the EU's extended deadlines show that not everyone is 
+            racing in the same direction. The developers who understand these fault lines will be best 
+            positioned to build on the right side of history.
+        </div>
+    </section>
 
-    <main class="container">
-        <section id="weekly-news-section" class="pulse-section">
-            <div class="section-badge">🔥 Top News</div>
-            <div id="news-grid" class="news-grid">
-                <p class="loading-text">Loading the latest AI signal...</p>
-            </div>
-        </section>
+    <section id="weekly-news-section" class="pulse-section">
+        <div class="section-badge">🔥 Top News</div>
+        <div id="news-grid" class="news-grid">
+            <p class="loading-text">Loading the latest AI signal...</p>
+        </div>
+    </section>
 
-        <section id="weekly-tools-section" class="pulse-section">
-            <div class="section-badge">🛠️ Power Tools</div>
-            <div id="tools-grid" class="tools-grid"></div>
-        </section>
+    <section id="weekly-tools-section" class="pulse-section">
+        <div class="section-badge">🛠️ Power Tools</div>
+        <div id="tools-grid" class="tools-grid"></div>
+    </section>
 
-        <section id="premium-cta" class="pulse-section premium-card fade-in">
-            <div class="premium-content">
-                <h2>Go Pro with AI Pulse</h2>
-                <p>Get exclusive AI implementation workflows, custom GPT prompts, and deep-dive industry analysis delivered every Monday morning.</p>
-                <form class="subscribe-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn-accent">Join 5,000+ Pros</button>
-                </form>
-                <p class="sub-text">Join the top 1% of AI users. No spam, just value.</p>
-            </div>
-        </section>
+    <!-- CHANGE 5: Improved Email CTA -->
+    <section id="premium-cta" class="pulse-section premium-card fade-in">
+        <div class="premium-content">
+            <h2>Get the Signal Every Monday Morning</h2>
+            <p>5 AI stories + 6 power tools, curated in under 3 minutes. Join 5,000+ founders, developers, and researchers.</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn-accent">Join 5,000+ Pros</button>
+            </form>
+            <p class="sub-text">Join the top 1% of AI users. No spam, just value.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">🎁 Subscribe and get our free AI Prompt Toolkit — 10 battle-tested workflows.</p>
+        </div>
+    </section>
 
         <section id="fun-zone-section" class="pulse-section fun-zone">
             <div class="section-badge">🎭 Meme of the Week</div>
             <div id="meme-grid" class="meme-container"></div>
         </section>
 
+        <!-- CHANGE 4: Past Editions in The Library -->
         <section id="archive-section" class="fade-in">
             <div class="section-header">
                 <h2>The Library</h2>
-                <p>Access past rounds in your data directory.</p>
+            </div>
+            <div class="library-grid">
+                <div class="library-card">
+                    <div class="library-info">
+                        <h4>March 7, 2026</h4>
+                        <p>Gemini 2.5 Ultra drops, Meta's Llama 4 leaks, and the agent wars begin</p>
+                    </div>
+                    <a href="#" class="read-more-btn">Read Edition →</a>
+                </div>
+                <div class="library-card">
+                    <div class="library-info">
+                        <h4>February 28, 2026</h4>
+                        <p>DeepSeek R2 shocks benchmarks, OpenAI responds with o3 Pro</p>
+                    </div>
+                    <a href="#" class="read-more-btn">Read Edition →</a>
+                </div>
+                <div class="library-card">
+                    <div class="library-info">
+                        <h4>February 21, 2026</h4>
+                        <p>Apple Intelligence goes global, Sora 2.0 launches to creators</p>
+                    </div>
+                    <a href="#" class="read-more-btn">Read Edition →</a>
+                </div>
             </div>
         </section>
     </main>
@@ -103,8 +139,9 @@
         <div class="footer-content">
             <p>© 2026 GrowXwithChandra. Powered by Gemini Automation.</p>
             <div class="footer-links">
-                <a href="#">X (Twitter)</a>
-                <a href="#">LinkedIn</a>
+                <!-- CHANGE 6: Fixed Social Links -->
+                <a href="https://twitter.com/GrowXwithChandra" target="_blank">X (Twitter)</a>
+                <a href="https://linkedin.com/in/GrowXwithChandra" target="_blank">LinkedIn</a>
                 <a href="#">Terms</a>
             </div>
         </div>

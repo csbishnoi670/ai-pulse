@@ -2,100 +2,112 @@
   "date": "March 14, 2026",
   "news": [
     {
-      "title": "OpenAI Releases GPT-5.4 with Native Computer-Use Capabilities",
+      "title": "OpenAI Faces Internal Backlash Over Pentagon Deal",
       "gist": [
-        "OpenAI launched GPT-5.4 and GPT-5.4 Pro with a 1-million-token context window.",
-        "The model can autonomously interact with software environments via mouse and keyboard control."
+        "Hardware leader Caitlin Kalinowski resigned on March 7th following OpenAI's deal to deploy models on Pentagon classified networks.",
+        "The deal includes 'red lines' against mass surveillance but has sparked a #QuitGPT movement among staff and users."
       ],
-      "full_summary": "OpenAI has officially released GPT-5.4, a major upgrade designed for complex professional workflows. The standout feature is its 'native computer-use' ability, allowing the model to navigate desktops, use applications, and execute multi-step tasks like a human agent. This marks a significant shift from text-based interaction to autonomous task execution.",
-      "tip": "Developers can now use the GPT-5.4 API to build agents that manage entire software stacks rather than just generating code snippets.",
-      "link": "https://openai.com/index/introducing-gpt-5-4"
+      "full_summary": "OpenAI's hardware lead Caitlin Kalinowski resigned after the company secured a contract to integrate AI models into the Pentagon's classified networks. While OpenAI insists on strict safeguards against lethal autonomous use and mass surveillance, internal dissent regarding military ethics has grown. This follows the acquisition of Promptfoo on March 9th to improve model reliability.",
+      "tip": "Monitor OpenAI's 'Trust and Safety' updates for changes in usage policies regarding government and defense sectors.",
+      "link": "https://openai.com/news/"
     },
     {
-      "title": "Anthropic Sues Pentagon Over 'Supply Chain Risk' Designation",
+      "title": "Anthropic Sues US Government Over 'Supply Chain Risk' Label",
       "gist": [
-        "Anthropic filed a lawsuit after being labeled a supply chain risk by the U.S. government.",
-        "The dispute centers on Anthropic\u2019s refusal to allow its AI for fully autonomous lethal weaponry."
+        "The DoD designated Anthropic a 'supply chain risk' after it refused to allow Claude to be used for lethal autonomous weapons.",
+        "Anthropic filed a lawsuit on March 10th, alleging the move was retaliatory and violates the First Amendment."
       ],
-      "full_summary": "Anthropic has entered a legal battle with the U.S. Department of Defense. The company was designated a 'supply chain risk' after refusing to modify its safety protocols to allow Claude models to be integrated into fully autonomous weapons systems. Anthropic maintains that its 'Constitutional AI' framework prohibits such use, leading to a major clash over AI safety and national security.",
-      "tip": "This case could set a legal precedent for how much control AI labs have over the downstream use of their models by government agencies.",
+      "full_summary": "Anthropic has entered a legal battle with the US administration after being labeled a supply chain risk by the Department of Defense. This designation forces federal agencies to phase out Claude. Anthropic claims this is retaliation for their refusal to participate in the development of autonomous lethal weaponry, highlighting the friction between AI safety labs and national defense priorities.",
+      "tip": "Federal contractors should verify their compliance status if utilizing Claude via government-managed cloud instances.",
       "link": "https://www.anthropic.com/news"
     },
     {
-      "title": "OpenAI Raises $110 Billion, Reaching $730B+ Valuation",
+      "title": "GPT-5.4 'Thinking' System Completes Global Rollout",
       "gist": [
-        "New funding round backed by Amazon, NVIDIA, and SoftBank.",
-        "The capital will be used to build massive sovereign AI infrastructure."
+        "The latest model features a 1-million-token context window and native 'computer use' capabilities.",
+        "A new 'Instruction Hierarchy' research paper released alongside it aims to prevent agentic prompt injections."
       ],
-      "full_summary": "In one of the largest private funding rounds in history, OpenAI secured $110 billion from a consortium of tech giants. The funding is earmarked for 'Sovereign AI' initiatives, including building global data centers and securing energy sources to power the next generation of artificial general intelligence (AGI) research.",
-      "tip": "The sheer scale of this funding suggests OpenAI is moving toward vertical integration, potentially designing its own chips and power grids.",
-      "link": "https://techcrunch.com"
+      "full_summary": "OpenAI completed the rollout of GPT-5.4, a system designed for deep reasoning and direct OS interaction. The model can now control computer environments natively. To mitigate risks, OpenAI introduced a new 'Instruction Hierarchy' protocol, ensuring that system instructions take precedence over user-provided data during complex agentic tasks.",
+      "tip": "Use the new 'Responses API' to build agents that can execute terminal commands or manage file systems directly.",
+      "link": "https://openai.com/blog"
     },
     {
-      "title": "Microsoft Unveils Copilot Cowork: The First 'True' AI Employee",
+      "title": "Microsoft Unveils Copilot Cowork and $99 E7 Tier",
       "gist": [
-        "Enterprise-grade agent that analyzes files across all Microsoft 365 apps.",
-        "Built using a hybrid of Anthropic and OpenAI technologies."
+        "Copilot Cowork uses Anthropic's Claude models to automate multi-step workflows across the Office suite.",
+        "Microsoft 365 E7 tier bundles all 'Agent 365' capabilities for enterprise users."
       ],
-      "full_summary": "Microsoft introduced 'Copilot Cowork,' an advanced agentic system that acts as a background collaborator. Unlike previous chatbots, Cowork can proactively suggest file edits, summarize long-term project threads across Teams and Outlook, and even join meetings to take action items without being prompted.",
-      "tip": "Enable the 'Privacy Guard' setting in the admin console to ensure Cowork only accesses files within specific project boundaries.",
-      "link": "https://blogs.microsoft.com"
+      "full_summary": "On March 10th, Microsoft announced 'Copilot Cowork,' a significant evolution of its AI assistant that leverages Anthropic's models for agentic tasks like rescheduling complex meetings and drafting decks across multiple apps. They also introduced the premium E7 licensing tier, which consolidates all advanced agentic tools into a single package.",
+      "tip": "Review your Microsoft 365 license; E7 is required for full cross-app autonomous agent functionality.",
+      "link": "https://blogs.microsoft.com/"
     },
     {
-      "title": "Meta Delays 'Avocado' Model Due to Performance Gaps",
+      "title": "Google Pixel 'Agentic' Drop Brings Gemini Actions to Mobile",
       "gist": [
-        "Meta's next-gen Llama-based model code-named 'Avocado' delayed until late 2026.",
-        "Internal benchmarks show it trailing behind Gemini 3.0 and GPT-5.4."
+        "The March 2026 Pixel Drop enables Gemini to perform tasks like grocery shopping and multi-app research autonomously.",
+        "Wiz acquisition closed on March 11th to bolster AI-driven cloud security."
       ],
-      "full_summary": "Meta has reportedly hit a roadblock with its 'Avocado' model. Internal sources indicate that the model struggled with complex reasoning and multimodal stability compared to competitors. Mark Zuckerberg is reportedly considering licensing Google's Gemini models for certain Instagram and WhatsApp features while the team refines their internal architecture.",
-      "tip": "Meta users should expect current Llama 3 models to remain the flagship for open-source developers through the summer.",
-      "link": "https://www.bloomberg.com"
+      "full_summary": "Google\u2019s latest Pixel update introduces 'Agentic AI' to Gemini, allowing it to perform multi-step real-world tasks with minimal supervision. Simultaneously, Google Cloud finalized its acquisition of Wiz, integrating its AI threat detection into the core cloud infrastructure to compete with Microsoft's enterprise security offerings.",
+      "tip": "Enable 'Gemini Extensions' in your Pixel settings to allow the assistant to interact with third-party shopping and travel apps.",
+      "link": "https://blog.google/"
     },
     {
-      "title": "Yann LeCun\u2019s AMI Labs Raises $1.03 Billion for 'World Models'",
+      "title": "Meta Deploys AI Anti-Scam Shield Across WhatsApp and FB",
       "gist": [
-        "Startup focused on long-term reasoning and physical planning.",
-        "Aims to move beyond the 'next-token prediction' paradigm of LLMs."
+        "New AI technology proactively identifies and blocks scam ads and suspicious social engineering attempts.",
+        "Meta will allow rival chatbots to access the WhatsApp Business API in Europe for a trial period."
       ],
-      "full_summary": "Advanced Machine Intelligence (AMI) Labs, founded by AI pioneer Yann LeCun, has raised over a billion dollars. The startup is focused on developing 'World Models'\u2014systems that understand cause-and-effect and physical reality, which LeCun argues is the only path to true AGI that can safely operate in the real world.",
-      "tip": "Watch AMI Labs for breakthroughs in robotics and autonomous systems that require higher-level reasoning than current LLMs provide.",
-      "link": "https://www.reuters.com"
+      "full_summary": "Meta has deployed a new AI-driven security layer across its messaging ecosystem to combat a surge in AI-generated phishing and scams. Furthermore, in compliance with EU regulations, Meta announced it would allow ChatGPT and Claude to integrate with WhatsApp Business, opening its ecosystem to competitors for the first time.",
+      "tip": "Report suspicious messages to help train the new anti-scam models specifically on localized fraud patterns.",
+      "link": "https://about.fb.com/news/"
     }
   ],
   "tools": [
     {
-      "name": "GPT-5.4",
-      "description": "OpenAI's most advanced model to date, featuring a 1M context window and the ability to control computers natively via mouse and keyboard.",
-      "link": "https://openai.com/index/introducing-gpt-5-4"
+      "name": "Microsoft Copilot Cowork",
+      "description": "An enterprise-grade AI teammate that autonomously manages files, projects, and communications across local and cloud environments.",
+      "use_case": "Automating project management, drafting cross-departmental reports, and proactive meeting scheduling.",
+      "pricing": "Paid (Included in M365 E7)",
+      "link": "https://www.microsoft.com/en-us/microsoft-365/copilot"
     },
     {
-      "name": "Codex Security",
-      "description": "An autonomous security agent that scans massive codebases for zero-day vulnerabilities and automatically generates verified patches.",
-      "link": "https://openai.com/index/codex-security-now"
+      "name": "Gemini Cross-App Synthesis",
+      "description": "A Workspace tool that generates documents or presentations by pulling data from Emails, Chats, and Drive files simultaneously.",
+      "use_case": "Creating comprehensive project summaries or pitch decks using fragmented data from multiple sources.",
+      "pricing": "Freemium",
+      "link": "https://workspace.google.com/"
     },
     {
-      "name": "Gemini 3.1 Flash-Lite",
-      "description": "Google's ultra-efficient model designed for high-frequency agentic tasks, featuring real-time speech-to-speech translation in over 100 languages.",
-      "link": "https://deepmind.google/technologies/gemini/flash-lite"
+      "name": "Nvidia Nemotron 3 Super",
+      "description": "An open-weights hybrid model (Mamba + Transformer) optimized specifically for multi-agent reasoning and long-context coding.",
+      "use_case": "Building autonomous software engineering agents and complex data analysis pipelines.",
+      "pricing": "Free (Open Weights)",
+      "link": "https://build.nvidia.com/"
     },
     {
-      "name": "Copilot Cowork",
-      "description": "Microsoft's background AI employee that proactively manages workflows, summaries, and file manipulations across the entire M365 suite.",
-      "link": "https://copilot.microsoft.com"
+      "name": "ChatGPT Tasks",
+      "description": "A built-in automation tool for scheduling recurring AI jobs like weekly email summaries or automated Notion updates.",
+      "use_case": "Personal productivity automation without requiring third-party tools like Zapier or Make.",
+      "pricing": "Paid (Plus/Team/Enterprise)",
+      "link": "https://chatgpt.com/"
     },
     {
-      "name": "Qwen 3.5",
-      "description": "Alibaba's new flagship multimodal model with native agentic capabilities, optimized for complex data analysis and e-commerce automation.",
-      "link": "https://modelstudio.alibabacloud.com"
+      "name": "Anthropic Enterprise Marketplace",
+      "description": "A hub for vertical-specific AI plugins (e.g., Legal, Finance, Medical) built on Claude for enterprise tools like Slack and Box.",
+      "use_case": "Deploying specialized AI for contract compliance, NDA triage, or financial auditing.",
+      "pricing": "Paid",
+      "link": "https://www.anthropic.com/"
     },
     {
-      "name": "Sora Turbo",
-      "description": "A significantly faster version of OpenAI's video generation tool, now supporting real-time interactive video editing and high-fidelity physics.",
-      "link": "https://sora.com"
+      "name": "OpenClaw Framework",
+      "description": "The leading open-source framework for building 'computer-use' agents that can operate any desktop software via vision and cursor control.",
+      "use_case": "Developing custom agents to automate legacy software that lacks modern APIs.",
+      "pricing": "Free",
+      "link": "https://github.com/openai/openclaw"
     }
   ],
   "meme": {
-    "link": "https://x.com/mihir_maroju/status/1897818985172263168",
-    "description": "The viral 'Your AI Slop Bores Me' (YASBM) browser game and social media phenomenon where humans pretend to be 'AI' to fulfill user prompts with hand-drawn 'human' mistakes."
+    "link": "https://x.com/search?q=netanyahu%20six%20fingers",
+    "description": "The 'Six Fingers' conspiracy trended heavily on X after users spotted what looked like AI-generated artifacts (a sixth finger) in a high-stakes video address by Benjamin Netanyahu, fueling widespread 'deepfake paranoia' during the US-Iran-Israel conflict escalation."
   }
 }
