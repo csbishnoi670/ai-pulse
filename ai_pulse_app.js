@@ -20,17 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const memeGrid = document.getElementById('meme-grid');
         const updateDateBadge = document.getElementById('update-date');
 
-        // USE RELATIVE DATA PATH (Assumes data is in same directory level as HTML)
-        const dataPath = './data/latest.json';
+        // FIXED PATH: Vercel prefers direct relative paths for JSON
+        const dataPath = 'data/latest.json';
 
         try {
             const response = await fetch(dataPath);
-            if (!response.ok) throw new Error('Data file not found');
+            if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
 
             if (data.date) updateDateBadge.textContent = `Roundup: ${data.date}`;
 
-            // NEWS (6 items)
+            // Render News
             if (data.news) {
                 newsGrid.innerHTML = data.news.map(item => `
                     <article class="card news-card fade-in">
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `).join('');
             }
 
-            // TOOLS (6 items)
+            // Render Tools
             if (data.tools) {
                 toolsGrid.innerHTML = data.tools.map(tool => `
                     <article class="card tool-card fade-in">
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `).join('');
             }
 
-            // MEME
+            // Render Meme
             if (data.meme && data.meme.link) {
                 memeGrid.innerHTML = `
                     <div class="meme-wrapper">
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Fetch error:', error);
-            newsGrid.innerHTML = `<p class='error'>Content loading error. Ensure your local server is running inside the <code>ai-pulse-live</code> folder.</p>`;
+            newsGrid.innerHTML = `<p class='error'>We're having trouble loading the latest AI signal. Please refresh the page.</p>`;
         }
     }
 
