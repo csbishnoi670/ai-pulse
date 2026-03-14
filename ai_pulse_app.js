@@ -20,79 +20,87 @@ document.addEventListener('DOMContentLoaded', () => {
         const memeGrid = document.getElementById('meme-grid');
         const updateDateBadge = document.getElementById('update-date');
 
-        // Path logic
-        const dataPath = 'data/latest.json';
-
         try {
-            const response = await fetch(dataPath);
-            if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            
+            const response = await fetch('data/latest.json');
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const data = await response.json();
 
             if (data.date) updateDateBadge.textContent = `Roundup: ${data.date}`;
 
-            // Render News
-            if (data.news) {
-                newsGrid.innerHTML = data.news.map(item => `
+            // DEFENSIVE NEWS RENDERING
+            if (data.news && Array.isArray(data.news)) {
+                newsGrid.innerHTML = data.news.map(item => {
+                    const title = item.title || item.story || "AI Headline";
+                    const link = item.link || item.url || "#";
+                    const gist = Array.isArray(item.gist) ? item.gist : ["High-signal update available", "Click source for full details"];
+                    const summary = item.full_summary || "Our agent is verifying the deep-dive details for this story. Check the source for the full report.";
+                    const tip = item.tip || "Stay tuned for actionable implementation tips.";
+
+                    return `
                     <article class="card news-card fade-in">
                         <div class="card-header"><span class="tag">Breaking News</span></div>
-                        <h3>${item.title}</h3>
+                        <h3>${title}</h3>
                         <div class="gist-section">
-                            <ul>${item.gist.map(g => `<li>${g}</li>`).join('')}</ul>
+                            <ul>${gist.map(g => `<li>${g}</li>`).join('')}</ul>
                         </div>
                         <div class="expandable-content">
-                            <div class="deep-dive"><p>${item.full_summary}</p></div>
-                            <div class="utility-tip"><strong>Why it matters:</strong> ${item.tip}</div>
+                            <div class="deep-dive"><p>${summary}</p></div>
+                            <div class="utility-tip"><strong>Why it matters:</strong> ${tip}</div>
                         </div>
                         <div class="card-footer">
-                            <button class="read-more-btn">Read More</button>
-                            <a href="${item.link}" class="source-link" target="_blank">Source ↗</a>
+                            <button class="read-more-btn" aria-expanded="false">Read More</button>
+                            <a href="${link}" class="source-link" target="_blank">Source ↗</a>
                         </div>
                     </article>
-                `).join('');
+                `}).join('');
             }
 
-            // Render Tools
-            if (data.tools) {
-                toolsGrid.innerHTML = data.tools.map(tool => `
+            // DEFENSIVE TOOLS RENDERING
+            if (data.tools && Array.isArray(data.tools)) {
+                toolsGrid.innerHTML = data.tools.map(tool => {
+                    const name = tool.name || "AI Tool";
+                    const desc = tool.description || tool.desc || "Trending breakthrough in the AI ecosystem.";
+                    const link = tool.link || tool.url || "#";
+
+                    return `
                     <article class="card tool-card fade-in">
                         <div class="card-header"><span class="tag">Trending Tool</span></div>
-                        <h3>${tool.name}</h3>
-                        <p class="gist-section">${tool.description}</p>
+                        <h3>${name}</h3>
+                        <p class="gist-section">${desc}</p>
                         <div class="card-footer">
-                            <a href="${tool.link}" class="source-link" target="_blank">Try Tool ↗</a>
+                            <a href="${link}" class="source-link" target="_blank">Try Tool ↗</a>
                         </div>
                     </article>
-                `).join('');
+                `}).join('');
             }
 
-            // Render Meme
-            if (data.meme && data.meme.link) {
-                memeGrid.innerHTML = `
-                    <div class="meme-wrapper">
-                        <p class="gist-section" style="text-align:center; margin-bottom:1.5rem;">${data.meme.description}</p>
-                        <div id="tweet-container"></div>
-                    </div>`;
+            // DEFENSIVE MEME RENDERING
+            if (data.meme) {
+                const desc = data.meme.description || data.meme.title || "Viral AI Pulse";
+                const link = data.meme.link || data.meme.url;
                 
-                const tweetId = data.meme.link.split('/').pop().split('?')[0];
-                if (window.twttr && window.twttr.widgets) {
-                    window.twttr.widgets.createTweet(tweetId, document.getElementById('tweet-container'), {
-                        theme: body.getAttribute('data-theme'),
-                        align: 'center'
-                    });
+                if (link && link.includes('x.com')) {
+                    memeGrid.innerHTML = `
+                        <div class="meme-wrapper">
+                            <p class="gist-section" style="text-align:center; margin-bottom:1.5rem;">${desc}</p>
+                            <div id="tweet-container"></div>
+                        </div>`;
+                    
+                    const tweetId = link.split('/').pop().split('?')[0];
+                    if (window.twttr && window.twttr.widgets) {
+                        window.twttr.widgets.createTweet(tweetId, document.getElementById('tweet-container'), {
+                            theme: body.getAttribute('data-theme'),
+                            align: 'center'
+                        });
+                    }
+                } else {
+                    memeGrid.innerHTML = `<p style="text-align:center; opacity:0.6;">Searching for this week's viral AI meme...</p>`;
                 }
             }
 
         } catch (error) {
-            console.error('AI Pulse Loading Error:', error);
-            newsGrid.innerHTML = `
-                <div style="text-align: center; padding: 2rem; border: 1px solid var(--border-color); border-radius: 20px;">
-                    <p class='error'><strong>Signal Error:</strong> ${error.message}</p>
-                    <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 1rem;">
-                        This usually means the data file is missing or the server blocked the request. 
-                        Please ensure <code>data/latest.json</code> exists in your repository.
-                    </p>
-                </div>`;
+            console.error('Render Error:', error);
+            newsGrid.innerHTML = `<p class='error'>Loading Error: ${error.message}. Please refresh.</p>`;
         }
     }
 
