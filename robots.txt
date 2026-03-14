@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://your-ai-pulse-site.vercel.app/sitemap.xml
