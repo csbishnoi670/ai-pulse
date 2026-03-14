@@ -20,12 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const memeGrid = document.getElementById('meme-grid');
         const updateDateBadge = document.getElementById('update-date');
 
-        // FIXED PATH: Vercel prefers direct relative paths for JSON
+        // Path logic
         const dataPath = 'data/latest.json';
 
         try {
             const response = await fetch(dataPath);
-            if (!response.ok) throw new Error('Network response was not ok');
+            if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            
             const data = await response.json();
 
             if (data.date) updateDateBadge.textContent = `Roundup: ${data.date}`;
@@ -83,8 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         } catch (error) {
-            console.error('Fetch error:', error);
-            newsGrid.innerHTML = `<p class='error'>We're having trouble loading the latest AI signal. Please refresh the page.</p>`;
+            console.error('AI Pulse Loading Error:', error);
+            newsGrid.innerHTML = `
+                <div style="text-align: center; padding: 2rem; border: 1px solid var(--border-color); border-radius: 20px;">
+                    <p class='error'><strong>Signal Error:</strong> ${error.message}</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 1rem;">
+                        This usually means the data file is missing or the server blocked the request. 
+                        Please ensure <code>data/latest.json</code> exists in your repository.
+                    </p>
+                </div>`;
         }
     }
 
