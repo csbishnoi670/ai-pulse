@@ -72,9 +72,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     return `
                     <article class="card tool-card fade-in">
-                        <div class="card-header"><span class="tag">Trending Tool</span></div>
-                        <div class="badge-container">
+                        <div class="card-header">
+                            <span class="tag">Trending Tool</span>
+                        </div>
+                        <div class="badge-container" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                             <span class="tool-badge badge-usecase">Best for: ${useCase}</span>
+                            <span style="opacity: 0.5;">·</span>
                             <span class="tool-badge ${pricingClass}">${pricing}</span>
                         </div>
                         <h3>${name}</h3>
